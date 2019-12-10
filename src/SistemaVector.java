@@ -12,7 +12,7 @@ public class SistemaVector {
         Scanner t=new Scanner(System.in);
         
         Estudante z;
-        int cod=0;
+        int cod;
         
         do{System.out.print("INTRODUZA O CODIGO: ");
             cod=t.nextInt();
@@ -24,9 +24,7 @@ public class SistemaVector {
                     System.out.print("INTRODUZA MEDIA: ");
                     z.media=t.nextDouble();
                     x.addElement(z);
-                    System.out.println();
-                    
-                    
+                    System.out.println();     
                 }
         }while(cod>0);
     }
@@ -39,25 +37,28 @@ public class SistemaVector {
     }
     public void imprimeDispensador(){
         Estudante k;
+        
         for(int i=0;i<x.size();i++){
-        k=(Estudante)x.get(i);
+            k=(Estudante)x.get(i);
    
-       if(k.media>=14)
+           if(k.media>=14){
             System.out.println(k.nome+"        "+k.media);
+           } 
         }
-        System.err.print("media invalida");
     }
     public void apagarEstudante(){
         Scanner t=new Scanner(System.in);
+        
         Estudante a;
         
         System.out.println("INTRODUZA CODIGO: ");
         int cod=t.nextInt();
+        
         for (int i = 0; i <x.size() ; i++) {
             a=(Estudante)x.get(i);
             if(a.getcodigo()==cod){
                 x.removeElementAt(i);
-                System.out.println("SUCESSO");
+                System.out.println("REMOCAO FEITA COM SUCESSO");
             }    
         }
     }    
@@ -99,15 +100,17 @@ public class SistemaVector {
               System.out.println("1.INTRODUZIR DADOS: ");
               System.out.println("2.IMPRIME TODOS: ");
               System.out.println("3.IMPRIME OS QUE DISPENSARAM: ");
-              System.out.println("4.EXIT ");
-              System.out.println("OPCAO[1/2/3/4]");
+              System.out.println("4.PROCURAR ESTUDANTE: ");
+              System.out.println("5.EXIT ");
+              System.out.println("OPCAO[1/2/3/4/5]");
               
               j=t.nextInt();
               switch(j){
                   case 1:lerDados();break;
                   case 2:imprimeTodos();break;
                   case 3:imprimeDispensador();break;
-                  case 4:System.exit(0);
+                  case 4:procurarEstudante();break;
+                  case 5:System.exit(0);
               }
             }while(true);
     }
